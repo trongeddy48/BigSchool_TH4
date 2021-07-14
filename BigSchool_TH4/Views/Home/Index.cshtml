@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BigSchool_TH4.Models.Course>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <ul class="course">
+        @foreach (var course in Model)
+        {
+            <li>
+                @*@course.DateTime.ToString("dd/MM/yyyy HH:mm") - @course.Name;*@
+                <div class="date">
+                    <div class="month">
+                        @course.DateTime.ToString("MM")
+                    </div>
+                    <div class="day">
+                        @course.DateTime.ToString("dd")
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="lecture">
+                        @course.Name
+                        @*<button class="btn btn-default btn-sm js-toggle-follow" data-user-id ="@course.LecturerId">Follow ?</button>*@
+                    </span>
+                    <span class="category">
+                        @course.Category.Name
+                        <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going ?</button>
+                    </span>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
